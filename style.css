@@ -1,0 +1,47 @@
+/* 將整個頁面背景設置為淺灰色 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 設置容器樣式，使其居中並具有陰影和圓角 */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* 設置標題樣式 */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 音頻播放器按鈕的樣式 */
+.audio-player {
+    margin-top: 20px;
+}
+
+/* 設置按鈕的樣式 */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 當滑鼠懸停在按鈕上時的樣式 */
+button:hover {
+    background-color: #45a049;
+}

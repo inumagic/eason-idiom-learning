@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eason學成語網頁</title>
+    <style>
+        /* CSS 內嵌樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .audio-player {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eason學成語網頁</h1>
+        <div class="audio-player">
+            <button id="playButton">播放</button>
+            <button id="stopButton">停止</button>
+        </div>
+        <!-- 隱藏的 audio 元素 -->
+        <audio id="audioPlayer" style="display: none;">
+            <source src="voice1.m4a" type="audio/mpeg">
+            您的瀏覽器不支援音訊播放。
+        </audio>
+    </div>
+    <script>
+        // 語音檔案列表
+        const audioFiles = [
+            'voice1.m4a', // 第一個語音檔案
+            'voice2.m4a', // 第二個語音檔案
+            'voice3.m4a', // 第三個語音檔案
+            'voice4.m4a', // 第四個語音檔案
+            'voice5.m4a'  // 第五個語音檔案
+        ];
+
+        let currentAudioIndex = 0;
+        const audioElement = document.getElementById('audioPlayer');
+
+        // 播放按鈕事件
+        document.getElementById('playButton').addEventListener('click', playAudioSequence);
+        document.getElementById('stopButton').addEventListener('click', stopAudio);
+
+        // 連續播放語音
+        function playAudioSequence() {
+            if (currentAudioIndex >= audioFiles.length) {
+                currentAudioIndex = 0; // 從頭開始播放
+            }
+            audioElement.src = audioFiles[currentAudioIndex];
+            audioElement.play();
+            audioElement.onended = function() {
+                currentAudioIndex++;
+                if (currentAudioIndex < audioFiles.length) {
+                    playAudioSequence(); // 播放下一個語音
+                }
+            };
+        }
+
+        // 停止播放
+        function stopAudio() {
+            audioElement.pause();
+            audioElement.currentTime = 0;
+            currentAudioIndex = 0;
+        }
+    </script>
+</body>
+</html>
